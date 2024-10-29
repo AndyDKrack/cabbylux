@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'cabbylux_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cabbylux_db',
+        'NAME': 'cabby_db',
         'USER': 'andy',
         'PASSWORD': '1234',
         'HOST': 'localhost',
