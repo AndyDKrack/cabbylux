@@ -20,7 +20,7 @@ def vehicle_create(request):
         form = VehicleForm()
     return render(request, 'vehicle/vehicle_form.html', {'form': form})
 
-def vehicle_update(request, driver_id):
+def vehicle_update(request, vehicle_id):
     vehicle = get_object_or_404(Vehicle, id=vehicle_id)
     if request.method == 'POST':
         form = VehicleForm(request.POST, request.FILES, instance=vehicle)

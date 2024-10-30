@@ -12,7 +12,7 @@ def chauffeur_detail(request, chauffeur_id):
 
 def chauffeur_create(request):
     if request.method == 'POST':
-        form = chauffeurForm(request.POST, request.FILES)
+        form = ChauffeurForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('chauffeur_list')
@@ -20,8 +20,8 @@ def chauffeur_create(request):
         form = ChauffeurForm()
     return render(request, 'chauffeur/chauffeur_form.html', {'form': form})
 
-def chauffeur_update(request, driver_id):
-    chauffeur = get_object_or_404(Driver, id=chauffeur_id)
+def chauffeur_update(request, chauffeur_id):
+    chauffeur = get_object_or_404(Chauffeur, id=chauffeur_id)
     if request.method == 'POST':
         form = ChauffeurForm(request.POST, request.FILES, instance=chauffeur)
         if form.is_valid():
