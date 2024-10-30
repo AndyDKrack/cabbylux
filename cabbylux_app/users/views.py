@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from rest_framework import viewsets
 from .models import User
 from .forms import UserForm
+from .serializers import UserSerializer
 
+# Function-Based Views
 def user_list(request):
     users = User.objects.all()
     return render(request, 'users/user_list.html', {'users': users})
@@ -37,3 +40,8 @@ def user_delete(request, user_id):
         user.delete()
         return redirect('user_list')
     return render(request, 'users/user_confirm_delete.html', {'user': user})
+
+# Class-Based View for REST API
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

@@ -1,14 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from rest_framework import viewsets
 from .models import Chauffeur
 from .forms import ChauffeurForm
+from .serializers import ChauffeurSerializer
 
+# Function-Based Views
 def chauffeur_list(request):
-    chauffeur = Chauffeur.objects.all()
-    return render(request, 'chauffeur/chauffeur_list.html', {'chauffeur': chauffeur})
+    chauffeurs = Chauffeur.objects.all()
+    return render(request, 'chauffeurs/chauffeur_list.html', {'chauffeurs': chauffeurs})
 
 def chauffeur_detail(request, chauffeur_id):
     chauffeur = get_object_or_404(Chauffeur, id=chauffeur_id)
-    return render(request, 'chauffeur/chauffeur_detail.html', {'chauffeur': chauffeur})
+    return render(request, 'chauffeurs/chauffeur_detail.html', {'chauffeur': chauffeur})
 
 def chauffeur_create(request):
     if request.method == 'POST':
@@ -18,7 +21,7 @@ def chauffeur_create(request):
             return redirect('chauffeur_list')
     else:
         form = ChauffeurForm()
-    return render(request, 'chauffeur/chauffeur_form.html', {'form': form})
+    return render(request, 'chauffeurs/chauffeur_form.html', {'form': form})
 
 def chauffeur_update(request, chauffeur_id):
     chauffeur = get_object_or_404(Chauffeur, id=chauffeur_id)
@@ -29,11 +32,16 @@ def chauffeur_update(request, chauffeur_id):
             return redirect('chauffeur_detail', chauffeur_id=chauffeur.id)
     else:
         form = ChauffeurForm(instance=chauffeur)
-    return render(request, 'chauffeur/chauffeur_form.html', {'form': form})
+    return render(request, 'chauffeurs/chauffeur_form.html', {'form': form})
 
 def chauffeur_delete(request, chauffeur_id):
     chauffeur = get_object_or_404(Chauffeur, id=chauffeur_id)
     if request.method == 'POST':
         chauffeur.delete()
         return redirect('chauffeur_list')
-    return render(request, 'chauffeur/chauffeur_confirm_delete.html', {'chauffeur': chauffeur})
+    return render(request, 'chauffeurs/chauffeur_confirm_delete.html', {'chauffeur': chauffeur})
+
+# Class-Based View for REST API
+class ChauffeurViewSet(viewsets.ModelViewSet):
+    queryset = Chauffeur.objects.all()
+    serializer_class = ChauffeurSerializer

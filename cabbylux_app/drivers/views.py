@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from rest_framework import viewsets
 from .models import Driver
 from .forms import DriverForm
+from .serializers import DriverSerializer
 
+# Function-Based Views
 def driver_list(request):
     drivers = Driver.objects.all()
     return render(request, 'drivers/driver_list.html', {'drivers': drivers})
@@ -37,3 +40,8 @@ def driver_delete(request, driver_id):
         driver.delete()
         return redirect('driver_list')
     return render(request, 'drivers/driver_confirm_delete.html', {'driver': driver})
+
+# Class-Based View for REST API
+class DriverViewSet(viewsets.ModelViewSet):
+    queryset = Driver.objects.all()
+    serializer_class = DriverSerializer
