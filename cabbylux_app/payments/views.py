@@ -20,7 +20,7 @@ def payment_create(request):
         form = PaymentForm()
     return render(request, 'payment/payment_form.html', {'form': form})
 
-def payment_update(request, driver_id):
+def payment_update(request, payment_id):
     payment = get_object_or_404(Payment, id=payment_id)
     if request.method == 'POST':
         form = PaymentForm(request.POST, request.FILES, instance=payment)
