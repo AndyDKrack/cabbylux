@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'cabbylux_app/css/custom.css' %}">
+{% endblock %}
+
+{% block nav-global %}
+    <div class="top-nav">
+        <input type="text" class="search-bar" placeholder="Search...">
+        <div class="profile-menu">
+            <button>Profile</button>
+            <div class="profile-menu-content">
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+        <label for="mode-toggle">Toggle Dark Mode</label>
+        <input type="checkbox" id="mode-toggle">
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    <script src="{% static 'cabbylux_app/js/custom.js' %}"></script>
+{% endblock %}

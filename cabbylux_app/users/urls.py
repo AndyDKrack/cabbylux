@@ -1,20 +1,25 @@
+# urls.py
+
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from . import views
-from .views import UserViewSet
+from .views import UserViewSet, user_list, user_detail, user_create, user_update, user_delete
 
-# Set up router for viewset
+app_name = 'users'  # Set the namespace for this app
+
+# Set up the router for the ViewSet
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 
-# Define urlpatterns for both function-based views and viewset routes
 urlpatterns = [
-    path('', include(router.urls)),  # Include the viewset routes
+    # Include the ViewSet URLs
+    path('', include(router.urls)),
 
-    # Function-based views for Users
-    path('user-list/', views.user_list, name='user_list'),
-    path('user-new/', views.user_create, name='user_create'),
-    path('user/<int:user_id>/', views.user_detail, name='user_detail'),
-    path('user/<int:user_id>/edit/', views.user_update, name='user_update'),
-    path('user/<int:user_id>/delete/', views.user_delete, name='user_delete'),
+    # Define URL patterns for the function-based views (FBVs) with unique names for namespacing
+    path('user-list/', user_list, name='user_list'),  # List view
+    path('user-new/', user_create, name='user_create'),  # Create view
+    path('user/<int:user_id>/', user_detail, name='user_detail'),  # Detail view
+    path('user/<int:user_id>/edit/', user_update, name='user_update'),  # Update view
+    path('user/<int:user_id>/delete/', user_delete, name='user_delete'),  # Delete view
 ]
+
+

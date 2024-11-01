@@ -1,0 +1,63 @@
+/* custom css */
+
+body {
+    background-color: #f4f4f4; /* Default light mode */
+    transition: background-color 0.3s;
+}
+
+.dark-mode {
+    background-color: #2e2e2e; /* Dark mode */
+    color: #ffffff; /* Text color in dark mode */
+}
+
+.top-nav {
+    background-color: #007bff; /* Colorful UI */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.sidebar {
+    position: fixed;
+    top: 50px; /* Adjust based on your top nav height */
+    left: 0;
+    width: 200px;
+    height: calc(100% - 50px);
+    background-color: #343a40; /* Dark sidebar */
+    color: white;
+    overflow-y: auto;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #007bff; /* Highlight on hover */
+}
+
+.search-bar {
+    margin: 10px;
+}
+
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-menu-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.profile-menu:hover .profile-menu-content {
+    display: block;
+}
+
+/* Add more styles as needed */
