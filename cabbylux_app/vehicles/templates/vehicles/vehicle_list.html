@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle List</title>
+</head>
+<body>
+    <h1>Vehicle List</h1>
+    <ul>
+        {% for vehicle in vehicles %}
+            <li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'vehicle_create' %}">Add New Vehicle</a>
+</body>
+</html>

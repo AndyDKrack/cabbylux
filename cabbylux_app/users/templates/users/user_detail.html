@@ -1,0 +1,14 @@
+<!-- users/templates/users/user_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.name }}</title>
+</head>
+<body>
+    <h1>{{ user.name }}</h1>
+    <p>Email: {{ user.email }}</p>
+    <a href="{% url 'user_update' user.id %}">Edit</a> |
+    <a href="{% url 'user_delete' user.id %}">Delete</a>
+</body>
+</html>

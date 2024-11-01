@@ -1,0 +1,16 @@
+<!-- users/templates/users/user_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete {{ user.name }}</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete {{ user.name }}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+    <a href="{% url 'user_list' %}">Cancel</a>
+</body>
+</html>

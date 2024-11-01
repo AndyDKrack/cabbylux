@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver List</title>
+</head>
+<body>
+    <h1>Driver List</h1>
+    <ul>
+        {% for driver in drivers %}
+            <li><a href="{% url 'driver_detail' driver.id %}">{{ driver.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'driver_create' %}">Add New Driver</a>
+</body>
+</html>

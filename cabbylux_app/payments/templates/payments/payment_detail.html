@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment {{ payment.id }}</title>
+</head>
+<body>
+    <h1>Payment ID: {{ payment.id }}</h1>
+    <p>Amount: {{ payment.amount }}</p>
+    <p>Date: {{ payment.date }}</p>
+    <a href="{% url 'payment_update' payment.id %}">Edit</a> |
+    <a href="{% url 'payment_delete' payment.id %}">Delete</a>
+</body>
+</html>

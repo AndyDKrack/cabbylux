@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ driver.name }}</title>
+</head>
+<body>
+    <h1>{{ driver.name }}</h1>
+    <p>License: {{ driver.license }}</p>
+    <a href="{% url 'driver_update' driver.id %}">Edit</a> |
+    <a href="{% url 'driver_delete' driver.id %}">Delete</a>
+</body>
+</html>

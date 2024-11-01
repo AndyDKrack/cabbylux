@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chauffeur List</title>
+</head>
+<body>
+    <h1>Chauffeur List</h1>
+    <ul>
+        {% for chauffeur in chauffeurs %}
+            <li><a href="{% url 'chauffeur' chauffeur.id %}">{{ chauffeur.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'chauffeur' %}">Add New Chauffeur</a>
+</body>
+</html>

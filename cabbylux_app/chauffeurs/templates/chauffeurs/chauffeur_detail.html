@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ chauffeur.name }}</title>
+</head>
+<body>
+    <h1>{{ chauffeur.name }}</h1>
+    <p>License: {{ chauffeur.license }}</p>
+    <a href="{% url 'chauffeur_update' chauffeur.id %}">Edit</a> |
+    <a href="{% url 'chauffeur_delete' chauffeur.id %}">Delete</a>
+</body>
+</html>

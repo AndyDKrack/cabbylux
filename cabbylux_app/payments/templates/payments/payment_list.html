@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment List</title>
+</head>
+<body>
+    <h1>Payment List</h1>
+    <ul>
+        {% for payment in payments %}
+            <li><a href="{% url 'payment_detail' payment.id %}">{{ payment.amount }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'payment_create' %}">Add New Payment</a>
+</body>
+</html>

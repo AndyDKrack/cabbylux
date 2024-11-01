@@ -1,0 +1,17 @@
+<!-- users/templates/users/user_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.pk %}Edit User{% else %}Create User{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Edit User{% else %}Create User{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'user_list' %}">Back to list</a>
+</body>
+</html>
