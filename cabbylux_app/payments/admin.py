@@ -4,7 +4,7 @@ from .models import Payment
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'amount', 'payment_date', 'status')
-    search_fields = ('user__username', 'status')
-    list_filter = ('status', 'payment_date')
+    list_display = ('transaction_id', 'customer_name', 'amount_paid', 'date_and_time',)
+    search_fields = ('linked_driver_or_chauffeur', 'amount_earned', 'commission_rate_deducted')
+    list_filter = ('transaction_id', 'amount_paid')
 
